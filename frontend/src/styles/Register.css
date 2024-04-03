@@ -1,0 +1,265 @@
+body {
+    background-color: #b163c7;
+    overflow-y: hidden;
+}
+
+.container-fluid {
+    display: flex;
+    padding: 0;
+}
+
+h1 {
+    font-size: 6rem;
+    color: white;
+    margin: 0 20%;
+}
+
+h1 img {
+    width: 45%;
+}
+
+.register.container-left {
+    background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: cover;
+    min-height: 100vh;
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.register.container-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+}
+
+.register.container-purple {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #b163c7;
+    padding: 4% 0;
+    width: 100%;
+    user-select: none;
+}
+
+.register.container-purple p {
+    color: white;
+    font-size: 1.2rem;
+    font-family: 'Zilla Slab';
+    text-align: center;
+    margin: 0 5%;
+}
+
+.register.form {
+    width: 90%;
+    padding: 5%;
+}
+
+.register.form fieldset {
+    min-width: auto;
+    padding: inherit;
+    margin: inherit;
+    border: 2px solid white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    overflow-y: auto;
+    max-height: 540px;
+}
+
+.register.form fieldset::-webkit-scrollbar {
+    background-color: #b163c7;
+}
+
+.register.form fieldset::-webkit-scrollbar-track {
+    background-color: white;
+    border-radius: 10px;
+}
+
+.register.form fieldset::-webkit-scrollbar-thumb { 
+    background-color: #6a307a;
+    border-radius: 10px;
+}
+
+.register.form fieldset::-webkit-scrollbar-thumb:hover {
+    background-color: #984aad;
+}
+
+.register.form legend {
+    float: none;
+    width: auto;
+    margin-bottom: initial;
+    font-size: initial;
+    line-height: initial;
+    text-align: center;
+    padding: 2% 10%;
+    font-family: 'Zilla Slab';
+    font-size: 1.5rem;
+    font-style: italic;
+    border: 2px solid white;
+    border-radius: 15px;
+    color: white;
+    background-color: #b163c7;
+}
+
+.register.inputContainer{
+    margin: 2% 0;
+}
+
+.register.form label {
+    color: white;
+    border-bottom: 1px solid;
+    width: 80%;
+    margin: 0 0 2% 0;
+    font-family: "Boogaloo";
+    font-size: 1.3rem;
+}
+
+.register.form input {
+    width: 100%;
+    text-align: center;
+    border-radius: 5px;
+    border: none;
+    padding: 2% 0;
+    transition: ease all 0.2s;
+    font-family: "Boogaloo";
+    font-size: 1.3rem;
+}
+
+.register.form input:focus,
+.register.form select:focus {
+    border: none;
+    outline: none;
+    box-shadow: 0px 0px 10px 0.1px black;
+}
+
+.register.form .register.inputContainer.error input{
+    box-shadow: 0px 0px 25px 0.1px #ff0000;
+}
+
+.register.form .register.inputContainer p{
+    margin: 0 15%;
+    padding: 0;
+    text-align: center;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #DDD;
+    width: 70%;
+}
+
+.register.form .register.btnDate {
+    padding-left: 10%;
+}
+
+.register.form .register.btnDate::-webkit-calendar-picker-indicator {
+    margin-right: 2%;
+    padding: 1%;
+    border: 1px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.register.form p {
+    margin-top: 2%;
+    color: white;
+    font-family: "Boogaloo";
+    font-size: 1.2rem;
+}
+
+.register.form a {
+    color: #1d4468;
+}
+
+.register.form a:hover {
+    color: #3388d8;
+}
+
+.register.steps-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 2% 15% 5% 15%;
+}
+
+.register.steps-container span:nth-child(1),
+.register.steps-container span:nth-child(3),
+.register.steps-container span:nth-child(5) {
+    background-color: white;
+    padding: 10px 18px;
+    border-radius: 50%;
+    border: 2px solid black;
+    user-select: none;
+    cursor: pointer;
+}
+
+.register.steps-container span:nth-child(2),
+.register.steps-container span:nth-child(4) {
+    height: 4px;
+    border: 1px solid black;
+    width: 80%;
+    background-color: white;
+    margin: 0 2%;
+    border-radius: 20px;
+}
+
+.register.steps-container .register.spnActive {
+    background-color: #7cd888;
+    color: white;
+    padding: 10px 17px;
+    border: 2px solid white;
+}
+
+.register.steps-container .register.lineCompleted {
+    background-color: #7cd888;
+    border: 1px solid white;
+}
+
+.btnRegister {
+    background-color: #b163c7;
+    border: 3px solid white;
+    color: white;
+    margin: 5% 0;
+    padding: 2% 0;
+    border-radius: 10px;
+    font-family: "Boogaloo";
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.btnRegister:hover {
+    background-color: white;
+    border: 3px solid white;
+    color: #b163c7;
+}
+
+.register.form .register.selectBox {
+    margin: 2% 0;
+    position: relative;
+}
+
+.register.form .register.selectGender {
+    font-family: "Boogaloo";
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 2% 0;
+    border-radius: 5px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
+    transition: ease all 0.2s;
+    width: 100%;
+}
+
+.register.form .register.selectBox::after {
+    content: "";
+    position: absolute;
+    top: 47%;
+    right: 3%;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #b163c7;
+}
