@@ -8,6 +8,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -29,11 +30,11 @@ public class UserService implements IUserService {
     @Override
     @Transactional
     public User createUser(User user) throws UserException {
-        if(user.getFirstName() == null || user.getLastName() == null || user.getBirthdate()== null || user.getGenre() == null ||
-                user.getEmail() == null || user.getUsername() == null || user.getPassword() == null){
+        if (user.getFirstName() == null || user.getLastName() == null || user.getBirthdate() == null || user.getGenre() == null
+                || user.getEmail() == null || user.getUsername() == null || user.getPassword() == null) {
             throw new UserException("Rellene los campos correctamente.");
         }
-        
+
         User u = userRepository.findByEmail(user.getEmail()).orElse(null);
         if (u == null) {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
