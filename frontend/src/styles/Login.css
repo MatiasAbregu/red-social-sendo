@@ -59,9 +59,9 @@ h1 img {
 }
 
 .login.form fieldset {
-    min-width: auto; 
-    padding: inherit; 
-    margin: inherit; 
+    min-width: auto;
+    padding: inherit;
+    margin: inherit;
     border: 2px solid white;
     display: flex;
     flex-direction: column;
@@ -70,9 +70,9 @@ h1 img {
 
 .login.form legend {
     float: none;
-    width: auto; 
-    margin-bottom: initial; 
-    font-size: initial; 
+    width: auto;
+    margin-bottom: initial;
+    font-size: initial;
     line-height: initial;
     text-align: center;
     padding: 2% 10%;
@@ -85,8 +85,12 @@ h1 img {
     background-color: #b163c7;
 }
 
-.login.form input{
+.login.inputContainer {
     margin: 2% 0;
+}
+
+.login.form input {
+    width: 100%;
     text-align: center;
     border-radius: 5px;
     border: none;
@@ -96,43 +100,62 @@ h1 img {
     font-size: 1.3rem;
 }
 
-.login.form input:focus{
+.login.form input:focus {
     border: none;
     outline: none;
     box-shadow: 0px 0px 10px 0.1px black;
 }
 
-.login.form label{
+.login.form label {
     color: white;
     border-bottom: 1px solid;
-    width: 35%;
-    margin: 0 0 0.5% 0;
+    width: 80%;
+    margin: 0 0 2% 0;
     font-family: "Boogaloo";
     font-size: 1.3rem;
 }
 
-.login.form .login.checkbox{
+.login.form .login.checkbox {
     width: 100%;
     border-bottom: none;
     text-align: center;
 }
 
-.login.form p{
+.login.form .login.checkbox input {
+    width: auto;
+    padding: initial;
+    transition: ease all 0.2s;
+}
+
+.login.form p {
     margin-top: 1%;
     color: white;
     font-family: "Boogaloo";
     font-size: 1.2rem;
 }
 
-.login.form a{
+.login.form .login.inputContainer.error input {
+    box-shadow: 0px 0px 25px 0.1px #ff0000;
+}
+
+.login.form .login.inputContainer p {
+    margin: 0 15%;
+    padding: 0;
+    text-align: center;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #DDD;
+    width: 70%;
+}
+
+.login.form a {
     color: #1d4468;
 }
 
-.login.form a:hover{
+.login.form a:hover {
     color: #3388d8;
 }
 
-.btnLogin{
+.btnLogin {
     background-color: #b163c7;
     border: 3px solid white;
     color: white;
@@ -144,7 +167,7 @@ h1 img {
     transition: all 0.3s ease;
 }
 
-.btnLogin:hover{
+.btnLogin:hover {
     background-color: white;
     border: 3px solid white;
     color: #b163c7;

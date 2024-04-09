@@ -80,7 +80,7 @@ h1 img {
     border-radius: 10px;
 }
 
-.register.form fieldset::-webkit-scrollbar-thumb { 
+.register.form fieldset::-webkit-scrollbar-thumb {
     background-color: #6a307a;
     border-radius: 10px;
 }
@@ -106,7 +106,7 @@ h1 img {
     background-color: #b163c7;
 }
 
-.register.inputContainer{
+.register.inputContainer {
     margin: 2% 0;
 }
 
@@ -137,11 +137,11 @@ h1 img {
     box-shadow: 0px 0px 10px 0.1px black;
 }
 
-.register.form .register.inputContainer.error input{
+.register.form .register.inputContainer.error input {
     box-shadow: 0px 0px 25px 0.1px #ff0000;
 }
 
-.register.form .register.inputContainer p{
+.register.form .register.inputContainer p {
     margin: 0 15%;
     padding: 0;
     text-align: center;
@@ -262,4 +262,30 @@ h1 img {
     border-left: 8px solid transparent;
     border-right: 8px solid transparent;
     border-top: 8px solid #b163c7;
+}
+
+.register .successIcon {
+    background-color: #7cd888;
+    color: white;
+    border: 2px solid white;
+    text-align: center;
+    margin: 0 33%;
+    padding: 10% 0;
+    border-radius: 100%;
+    font-size: 2rem !important;
+    margin-bottom: 5%;
+}
+
+.register .successText{
+    text-align: center;
+    font-size: 1.5rem !important;
+}
+
+.register .successText a{
+    text-decoration: underline;
+    font-style: italic;
+}
+
+.register .successText a:hover{
+    cursor: pointer;
 }
