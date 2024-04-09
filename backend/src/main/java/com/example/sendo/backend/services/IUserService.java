@@ -6,5 +6,6 @@ import com.example.sendo.backend.models.User;
 
 public interface IUserService {
     User createUser(User user) throws UserException;
-    Token login(User user) throws UserException;
+    Token loginPerSesion(User user) throws UserException;
+    Token loginPerWeek(User user) throws UserException;
 }

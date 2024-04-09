@@ -8,8 +8,12 @@ class UserService {
         return axios.post(`${API}/register`, data);
     }
 
-    login(data){
-        return axios.post(`${API}/login`, data);
+    loginPerSesion(data){
+        return axios.post(`${API}/loginPerSesion`, data);
+    }
+
+    loginPerWeek(data){
+        return axios.post(`${API}/loginPerWeek`, data);
     }
 
 }

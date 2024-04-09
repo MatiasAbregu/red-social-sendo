@@ -16,9 +16,14 @@ public class UserController {
     @Autowired
     private IUserService userService;
     
-    @PostMapping("/login")
-    private ResponseEntity<Token> login(@RequestBody User user) throws UserException{
-        return ResponseEntity.ok(userService.login(user));
+    @PostMapping("/loginPerSesion")
+    private ResponseEntity<Token> loginPerSesion(@RequestBody User user) throws UserException{
+        return ResponseEntity.ok(userService.loginPerSesion(user));
+    }
+    
+    @PostMapping("/loginPerWeek")
+    private ResponseEntity<Token> loginPerWeek(@RequestBody User user) throws UserException {
+        return ResponseEntity.ok(userService.loginPerWeek(user));
     }
     
     @PostMapping("/register")

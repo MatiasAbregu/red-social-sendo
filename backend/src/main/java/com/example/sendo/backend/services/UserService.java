@@ -46,11 +46,19 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public Token login(User user) throws UserException {
+    public Token loginPerSesion(User user) throws UserException {
         User u = userRepository.findByEmail(user.getEmail()).orElseThrow(() -> new UserException("Ese email no está registrado."));
         authManager.authenticate(new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword()));
-        Token token = new Token(jwtService.getToken(u));
+        Token token = new Token(jwtService.getTokenPerSesion(u));
         return token;
     }
 
+    @Override
+    public Token loginPerWeek(User user) throws UserException {
+        User u = userRepository.findByEmail(user.getEmail()).orElseThrow(() -> new UserException("Ese email no está registrado."));
+        authManager.authenticate(new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword()));
+        Token token = new Token(jwtService.getTokenPerWeek(u));
+        return token;
+    }
+    
 }

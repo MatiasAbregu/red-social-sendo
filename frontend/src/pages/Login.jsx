@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from "@hookform/resolvers/yup";
 import UserService from '../services/UserService'
+import { AES } from "crypto-js";
 
 export const Login = () => {
 
@@ -17,17 +18,33 @@ export const Login = () => {
     const { handleSubmit, register, formState: { errors } } = useForm({ resolver: yupResolver(schema) });
 
     const onSubmit = (data) => {
-        UserService.login(data)
-            .then(r => {
-                if (r.data) {
-                    console.log(r.data);
-                    setNumError(0);
-                }
-            })
-            .catch(e => {
-                if (e.response.status == 403) setNumError(1);
-                else setNumError(2);
-            });
+        if (r.data) {
+            if (document.getElementById("checkboxInput").checked) {
+                UserService.loginPerWeek(data)
+                    .then(r => {
+                        document.cookie = 
+                        `token=${AES.encrypt(r.data.value, "sendopassword")}; 
+                        expires=${new Date().getMilliseconds + 604800016};
+                        secure; SameSite=Strict`;
+                    })
+                    .catch(e => {
+                        if (e.response.status == 403) setNumError(1);
+                        else setNumError(2);
+                    });
+            } else {
+                UserService.loginPerSesion(data)
+                    .then(r => {
+                        document.cookie = 
+                        `token=${AES.encrypt(r.data.value, "sendopassword")}`;
+                    })
+                    .catch(e => {
+                        if (e.response.status == 403) setNumError(1);
+                        else setNumError(2);
+                    });
+            }
+        }
+
+
     }
 
     return (
@@ -57,11 +74,11 @@ export const Login = () => {
                                 {errors.password && <p>{errors.password?.message}</p>}
                             </div>
                             <label className="login checkbox">
-                                <input type="checkbox" />
+                                <input type="checkbox" id="checkboxInput" />
                                 &nbsp; Mantener la sesión iniciada
                             </label>
-                            {numError == 0 ? <></> : numError == 1 ? <p className="login msgError">¡Email o contraseña incorrectos!</p> 
-                            : <p className="login msgError">¡Ese email no está registrado aún!</p>}
+                            {numError == 0 ? <></> : numError == 1 ? <p className="login msgError">¡Email o contraseña incorrectos!</p>
+                                : <p className="login msgError">¡Ese email no está registrado aún!</p>}
                             <button type="submit" className="btnLogin">Iniciar Sesión</button>
                             <p className="text-center">¿Aún no te has registrado? <a href="/register">¡Que esperas! Registrate ahora</a> </p>
                         </fieldset>

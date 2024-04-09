@@ -12,6 +12,7 @@
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
     "axios": "^1.6.8",
+    "crypto-js": "^4.2.0",
     "cryptojs": "^2.5.3",
     "dayjs": "^1.11.10",
     "dotenv": "^16.4.5",

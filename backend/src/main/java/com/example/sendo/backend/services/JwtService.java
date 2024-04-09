@@ -21,18 +21,34 @@ public class JwtService {
 
     private static Key sKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
-    public String getToken(User user) {
-        return getToken(new HashMap<>(), user);
+    public String getTokenPerSesion(User user) {
+        return getTokenPerSesion(new HashMap<>(), user);
+    }
+    
+    public String getTokenPerWeek(User user) {
+        return getTokenPerWeek(new HashMap<>(), user);
     }
 
-    public String getToken(HashMap<String, Object> claims, User user) {
+    public String getTokenPerSesion(HashMap<String, Object> claims, User user) {
         claims.put("username", user.getUsername());
         claims.put("role", user.getAuthorities().stream().map(GrantedAuthority::getAuthority).findFirst().orElse("User"));
         return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(user.getEmail())
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + +86400000))
+                .setExpiration(new Date(System.currentTimeMillis() + 86400000))
+                .signWith(sKey, SignatureAlgorithm.HS256)
+                .compact();
+    }
+    
+    public String getTokenPerWeek(HashMap<String, Object> claims, User user) {
+        claims.put("username", user.getUsername());
+        claims.put("role", user.getAuthorities().stream().map(GrantedAuthority::getAuthority).findFirst().orElse("User"));
+        return Jwts.builder()
+                .setClaims(claims)
+                .setSubject(user.getEmail())
+                .setIssuedAt(new Date())
+                .setExpiration(new Date(System.currentTimeMillis() + 604800016))
                 .signWith(sKey, SignatureAlgorithm.HS256)
                 .compact();
     }
