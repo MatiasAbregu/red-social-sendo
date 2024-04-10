@@ -18,33 +18,26 @@ export const Login = () => {
     const { handleSubmit, register, formState: { errors } } = useForm({ resolver: yupResolver(schema) });
 
     const onSubmit = (data) => {
-        if (r.data) {
-            if (document.getElementById("checkboxInput").checked) {
-                UserService.loginPerWeek(data)
-                    .then(r => {
-                        document.cookie = 
+        if (document.getElementById("checkboxInput").checked) {
+            UserService.loginPerWeek(data)
+                .then(r => {
+                    document.cookie =
                         `token=${AES.encrypt(r.data.value, "sendopassword")}; 
-                        expires=${new Date().getMilliseconds + 604800016};
-                        secure; SameSite=Strict`;
-                    })
-                    .catch(e => {
-                        if (e.response.status == 403) setNumError(1);
-                        else setNumError(2);
-                    });
-            } else {
-                UserService.loginPerSesion(data)
-                    .then(r => {
-                        document.cookie = 
-                        `token=${AES.encrypt(r.data.value, "sendopassword")}`;
-                    })
-                    .catch(e => {
-                        if (e.response.status == 403) setNumError(1);
-                        else setNumError(2);
-                    });
-            }
+                        expires=${new Date().getTime() + 604800016};
+                        secure; HttpOnly; SameSite=Strict`;
+                })
+                .catch(e => {
+                    if (e.response.status == 403) setNumError(1);
+                    else setNumError(2);
+                });
+        } else {
+            UserService.loginPerSesion(data)
+                .then(r => sessionStorage.setItem("token", AES.encrypt(r.data.value, "sendopassword")))
+                .catch(e => {
+                    if (e.response.status == 403) setNumError(1);
+                    else setNumError(2);
+                });
         }
-
-
     }
 
     return (
